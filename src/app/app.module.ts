@@ -12,9 +12,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BeneficiaryComponent } from './components/beneficiary/beneficiary.component';
+import { PolicyComponent } from './components/policy/policy.component';
+import { ClientsComponent } from './components/clients/clients.component';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BeneficiaryComponent, PolicyComponent, ClientsComponent, ProductsComponent],
   imports: [
     BrowserModule,
     MatSidenavModule,
