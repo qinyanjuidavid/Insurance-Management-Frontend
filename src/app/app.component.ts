@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { delay, filter } from 'rxjs/operators';
@@ -9,6 +9,7 @@ import {
   RouterModule,
 } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ProductService } from './service/product.service';
 
 @UntilDestroy()
 @Component({
@@ -21,10 +22,72 @@ export class AppComponent {
   sidenav!: MatSidenav;
 
   constructor(
+    private productsService: ProductService,
     private observer: BreakpointObserver,
     private router: Router,
     private route: ActivatedRoute
   ) {}
+
+  ngOnInit() {
+    this.onGetProducts();
+    this.onGetProduct();
+    // this.onDeleteProduct();
+    // this.onAddProduct();
+    this.onEditProduct();
+  }
+
+  onAddProduct() {
+    const product = {
+      productName: 'test',
+      description: 'test',
+      productType: 'test',
+      price: 100,
+    };
+    this.productsService.addProduct(product).subscribe(
+      (res) => console.log(res),
+      (err: any) => console.log(err),
+      () => console.log('complete')
+    );
+  }
+
+  onGetProducts() {
+    this.productsService.getProducts().subscribe(
+      (res) => console.log(res),
+      (err: any) => console.log(err),
+      () => console.log('complete')
+    );
+  }
+
+  onGetProduct() {
+    this.productsService.getProduct(2).subscribe(
+      (res) => console.log(res),
+      (err: any) => console.log(err),
+      () => console.log('complete')
+    );
+  }
+
+  onEditProduct() {
+    const product = {
+      id: 19,
+      productName: 'test',
+      description: 'test',
+      productType: 'test',
+      price: 100,
+    };
+    this.productsService.updateProduct(product).subscribe(
+      (res) => console.log(res),
+      (err: any) => console.log(err),
+      () => console.log('complete')
+    );
+  }
+
+  onDeleteProduct() {
+    this.productsService.deleteProduct(19).subscribe(
+      (res) => console.log(res),
+      (err: any) => console.log(err),
+      () => console.log('complete')
+    );
+  }
 
   ngAfterViewInit() {
     this.observer

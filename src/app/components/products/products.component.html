@@ -1,1 +1,75 @@
-<p>products works!</p>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item success" aria-current="page">
+    Insurance Products
+  </li>
+</ol>
+
+<div style="text-align: right">
+  <button mat-button class="add-insurance-product-button" color="primary">
+    <mat-icon>add</mat-icon>
+    Add Product
+  </button>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col">Product Type</th>
+      <th scope="col">Price</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Life Insurance</td>
+      <td>Life</td>
+      <td>1000</td>
+      <td>
+        <button mat-button class="edit-button" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+      <td>
+        <button mat-button class="delete-button" color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Car Insurance</td>
+      <td>Car</td>
+      <td>2000</td>
+      <td>
+        <button mat-button class="edit-button" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+      <td>
+        <button mat-button class="delete-button" color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Home Insurance</td>
+      <td>Home</td>
+      <td>3000</td>
+      <td>
+        <button mat-button class="edit-button" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+      <td>
+        <button mat-button class="delete-button" color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>  

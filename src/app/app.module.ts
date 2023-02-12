@@ -25,7 +25,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './components/home/home.component';
 //import material card
 import { MatCardModule } from '@angular/material/card';
-
+import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,8 +49,10 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
-    // FontAwesomeModule,
+    FontAwesomeModule,
     MatCardModule,
+    MatTableModule,
+    HttpClientModule,
   ],
 
   providers: [],
