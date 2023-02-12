@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
+//app routing
+import { AppRoutingModule } from './app-routing.module';
+
 // angular material imports
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,9 +19,23 @@ import { BeneficiaryComponent } from './components/beneficiary/beneficiary.compo
 import { PolicyComponent } from './components/policy/policy.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { ProductsComponent } from './components/products/products.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HomeComponent } from './components/home/home.component';
+//import material card
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
-  declarations: [AppComponent, BeneficiaryComponent, PolicyComponent, ClientsComponent, ProductsComponent],
+  declarations: [
+    AppComponent,
+    BeneficiaryComponent,
+    PolicyComponent,
+    ClientsComponent,
+    ProductsComponent,
+    NotFoundComponent,
+    HomeComponent,
+  ],
   imports: [
     BrowserModule,
     MatSidenavModule,
@@ -29,7 +46,12 @@ import { ProductsComponent } from './components/products/products.component';
     MatListModule,
     RouterModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
+    NgbModule,
+    // FontAwesomeModule,
+    MatCardModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent],
 })

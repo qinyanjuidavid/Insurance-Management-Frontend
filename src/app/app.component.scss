@@ -1,14 +1,14 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 mat-toolbar {
-  background: #2264ff;
+  background: #536eef;
   color: white;
 }
 
-mat-sidenav {
+.mat-sidenav {
   margin: 0px;
   width: 250px;
   border-right: none;
-  background: #2264ff;
+  background: #536eef;
   color: white;
   border-radius: 0px;
   padding: 16px;
@@ -26,7 +26,7 @@ mat-sidenav {
   overflow: auto;
 }
 
-mat-sidenav-container {
+.mat-sidenav-container {
   height: calc(100vh - 50px);
 }
 
@@ -37,7 +37,7 @@ mat-sidenav-container {
   justify-content: flex-start;
   font-size: 1rem;
 
-  mat-icon {
+  .mat-icon {
     margin-right: 8px;
   }
 }
@@ -60,7 +60,7 @@ mat-sidenav-container {
   color: lightgrey;
 }
 
-mat-divider {
+.mat-divider {
   margin-top: 16px;
   margin-bottom: 16px;
   background-color: rgba(255, 255, 255, 0.5);
