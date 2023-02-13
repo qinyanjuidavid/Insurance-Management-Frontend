@@ -28,4 +28,8 @@ export class ClientService {
   updateClient(id: number, client: Client): Observable<Client> {
     return this.http.put<Client>(this.apiUrl + 'clients/' + id + '/', client);
   }
+
+  deleteClient(id: number): Observable<Client> {
+    return this.http.delete<Client>(this.apiUrl + 'clients/' + id);
+  }
 }

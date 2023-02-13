@@ -57,7 +57,13 @@
         </button>
       </td>
       <td>
-        <button mat-button class="delete-button" color="warn">
+        <button
+          mat-button
+          class="delete-button"
+          color="warn"
+          *ngIf="client.id"
+          (click)="onDeleteClient(client.id)"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </td>

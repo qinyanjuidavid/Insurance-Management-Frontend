@@ -110,4 +110,15 @@ export class ClientsComponent {
         }
       );
   }
+
+  onDeleteClient(id: number) {
+    this.clientsService.deleteClient(id).subscribe(
+      (res) => {
+        this.onGetClients();
+        console.log(res);
+      },
+      (err: any) => console.log(err),
+      () => console.log('complete')
+    );
+  }
 }

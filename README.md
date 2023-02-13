@@ -24,4 +24,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+# Insurance-Management-Frontend
+
+Simple Insurance Management Angular Frontend
+
+> > > > > > > cc1f99cdb1cf22e5a2294b2ee1022df6cad8af74
