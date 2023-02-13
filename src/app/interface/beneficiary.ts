@@ -1,5 +1,5 @@
 export interface Beneficiary {
-  id: number;
+  id?: number;
   beneficiariesName: string;
   beneficiariesAddress: string;
   beneficiariesPhone: string;

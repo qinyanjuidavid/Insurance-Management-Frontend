@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Beneficiary } from 'src/app/interface/beneficiary';
 import { BeneficiaryService } from 'src/app/service/beneficiary.service';
@@ -11,6 +12,7 @@ import { BeneficiaryService } from 'src/app/service/beneficiary.service';
 export class BeneficiaryComponent {
   closeResult = '';
   beneficiaries: Beneficiary[] = [];
+  beneficiaryData: Beneficiary = {} as Beneficiary;
 
   constructor(
     private modalService: NgbModal,
@@ -25,6 +27,17 @@ export class BeneficiaryComponent {
     this.beneficiaryService.getBeneficiaries().subscribe(
       (res) => {
         this.beneficiaries = res;
+        console.log(res);
+      },
+      (err: any) => console.log(err),
+      () => console.log('complete')
+    );
+  }
+
+  onGetBeneficiary(id: number) {
+    this.beneficiaryService.getBeneficiary(id).subscribe(
+      (res) => {
+        this.beneficiaryData = res;
         console.log(res);
       },
       (err: any) => console.log(err),
@@ -57,6 +70,7 @@ export class BeneficiaryComponent {
 
   openEditModal(content: any, id: number) {
     if (typeof id === 'number') {
+      this.onGetBeneficiary(id);
     }
 
     this.modalService
@@ -69,5 +83,42 @@ export class BeneficiaryComponent {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
+  }
+
+  onAddBeneficiary(form: NgForm) {
+    if (form.valid) {
+      this.beneficiaryService.addBeneficiary(form.value).subscribe(
+        (res) => {
+          this.onGetBeneficiaries();
+          console.log(res);
+        },
+        (err: any) => console.log(err),
+        () => console.log('complete')
+      );
+    }
+  }
+
+  onDeleteBeneficiary(id: number) {
+    this.beneficiaryService.deleteBeneficiary(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.onGetBeneficiaries();
+      },
+      (err: any) => console.log(err),
+      () => console.log('complete')
+    );
+  }
+
+  onUpdateBeneficiary(id: number, form: NgForm) {
+    if (form.valid) {
+      this.beneficiaryService.updateBeneficiary(id, form.value).subscribe(
+        (res) => {
+          this.onGetBeneficiaries();
+          console.log(res);
+        },
+        (err: any) => console.log(err),
+        () => console.log('complete')
+      );
+    }
   }
 }

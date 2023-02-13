@@ -61,7 +61,13 @@
         </button>
       </td>
       <td>
-        <button mat-button class="delete-button" color="warn">
+        <button
+          mat-button
+          class="delete-button"
+          color="warn"
+          *ngIf="beneficiary.id"
+          (click)="onDeleteBeneficiary(beneficiary.id)"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </td>
@@ -80,12 +86,119 @@
     ></button>
   </div>
 
-  <form #BeneficiaryAddForm="ngForm">
+  <form
+    #BeneficiaryAddForm="ngForm"
+    (ngSubmit)="onAddBeneficiary(BeneficiaryAddForm)"
+  >
     <div class="modal-body">
-      <div class="mb-3"></div>
+      <div class="mb-3">
+        <!-- Beneficiary name -->
+        <label for="beneficiariesName">Beneficiary Name</label>
+        <input
+          id="beneficiariesName"
+          class="form-control"
+          placeholder="Beneficiary Name"
+          name="beneficiariesName"
+          ngModel
+          required
+        />
+        <div
+          *ngIf="
+            BeneficiaryAddForm.submitted &&
+            !BeneficiaryAddForm.controls['beneficiariesName'].valid
+          "
+          class="text-danger"
+        >
+          <p>Beneficiary Name is required.</p>
+        </div>
+        <!-- Beneficiary phone -->
+
+        <label for="beneficiariesPhone">Beneficiary Phone</label>
+        <input
+          id="beneficiariesPhone"
+          class="form-control"
+          placeholder="Beneficiary Phone"
+          name="beneficiariesPhone"
+          ngModel
+          required
+        />
+        <div
+          *ngIf="
+            BeneficiaryAddForm.submitted &&
+            !BeneficiaryAddForm.controls['beneficiariesPhone'].valid
+          "
+          class="text-danger"
+        >
+          <p>Beneficiary Phone is required.</p>
+        </div>
+        <!-- Beneficiary email -->
+        <label for="beneficiariesEmail">Beneficiary Email</label>
+        <input
+          id="beneficiariesEmail"
+          class="form-control"
+          placeholder="Beneficiary Email"
+          name="beneficiariesEmail"
+          ngModel
+          required
+        />
+        <div
+          *ngIf="
+            BeneficiaryAddForm.submitted &&
+            !BeneficiaryAddForm.controls['beneficiariesEmail'].valid
+          "
+          class="text-danger"
+        >
+          <p>Beneficiary Email is required.</p>
+        </div>
+        <!-- id -->
+        <label for="beneficiariesIdNumber">Beneficiary ID</label>
+        <input
+          id="beneficiariesIdNumber"
+          class="form-control"
+          placeholder="Beneficiary ID"
+          name="beneficiariesIdNumber"
+          ngModel
+          required
+        />
+        <div
+          *ngIf="
+            BeneficiaryAddForm.submitted &&
+            !BeneficiaryAddForm.controls['beneficiariesIdNumber'].valid
+          "
+          class="text-danger"
+        >
+          <p>Beneficiary ID Number is required.</p>
+        </div>
+        <!-- Address -->
+        <label for="beneficiariesAddress">Address</label>
+        <input
+          id="beneficiariesAddress"
+          class="form-control"
+          placeholder="Address"
+          name="beneficiariesAddress"
+          ngModel
+          required
+        />
+        <!-- Relationship -->
+        <label for="beneficiariesRelationship">Relationship</label>
+        <input
+          id="beneficiariesRelationship"
+          class="form-control"
+          placeholder="Relationship"
+          name="beneficiariesRelationship"
+          ngModel
+          required
+        />
+      </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn submit-button">Add Beneficiary</button>
+      <button
+        type="submit"
+        class="btn submit-button"
+        (click)="BeneficiaryAddForm.valid ? modal.close('Save click') : null"
+      >
+        Add Beneficiary
+      </button>
     </div>
   </form>
 </ng-template>
@@ -101,12 +214,116 @@
     ></button>
   </div>
 
-  <form #BeneficiaryAddForm="ngForm">
+  <form
+    #BeneficiaryUpdateForm="ngForm"
+    *ngIf="beneficiaryData.id"
+    (ngSubmit)="onUpdateBeneficiary(beneficiaryData.id, BeneficiaryUpdateForm)"
+  >
     <div class="modal-body">
-      <div class="mb-3"></div>
+      <div class="mb-3">
+        <!-- Beneficiary name -->
+        <label for="beneficiariesName">Beneficiary Name</label>
+        <input
+          id="beneficiariesName"
+          class="form-control"
+          placeholder="Beneficiary Name"
+          name="beneficiariesName"
+          [(ngModel)]="beneficiaryData.beneficiariesName"
+          required
+        />
+        <div
+          *ngIf="
+            BeneficiaryUpdateForm.submitted &&
+            !BeneficiaryUpdateForm.controls['beneficiariesName'].valid
+          "
+          class="text-danger"
+        >
+          <p>Beneficiary Name is required.</p>
+        </div>
+        <!-- Beneficiary phone -->
+
+        <label for="beneficiariesPhone">Beneficiary Phone</label>
+        <input
+          id="beneficiariesPhone"
+          class="form-control"
+          placeholder="Beneficiary Phone"
+          name="beneficiariesPhone"
+          [(ngModel)]="beneficiaryData.beneficiariesPhone"
+          required
+        />
+        <div
+          *ngIf="
+            BeneficiaryUpdateForm.submitted &&
+            !BeneficiaryUpdateForm.controls['beneficiariesPhone'].valid
+          "
+          class="text-danger"
+        >
+          <p>Beneficiary Phone is required.</p>
+        </div>
+        <!-- Beneficiary email -->
+        <label for="beneficiariesEmail">Beneficiary Email</label>
+        <input
+          id="beneficiariesEmail"
+          class="form-control"
+          placeholder="Beneficiary Email"
+          name="beneficiariesEmail"
+          [(ngModel)]="beneficiaryData.beneficiariesEmail"
+          required
+        />
+        <div
+          *ngIf="
+            BeneficiaryUpdateForm.submitted &&
+            !BeneficiaryUpdateForm.controls['beneficiariesEmail'].valid
+          "
+          class="text-danger"
+        >
+          <p>Beneficiary Email is required.</p>
+        </div>
+        <!-- id -->
+        <label for="beneficiariesIdNumber">Beneficiary ID</label>
+        <input
+          id="beneficiariesIdNumber"
+          class="form-control"
+          placeholder="Beneficiary ID"
+          name="beneficiariesIdNumber"
+          [(ngModel)]="beneficiaryData.beneficiariesIdNumber"
+          required
+        />
+        <div
+          *ngIf="
+            BeneficiaryUpdateForm.submitted &&
+            !BeneficiaryUpdateForm.controls['beneficiariesIdNumber'].valid
+          "
+          class="text-danger"
+        >
+          <p>Beneficiary ID Number is required.</p>
+        </div>
+        <!-- Address -->
+        <label for="beneficiariesAddress">Address</label>
+        <input
+          id="beneficiariesAddress"
+          class="form-control"
+          placeholder="Address"
+          name="beneficiariesAddress"
+          [(ngModel)]="beneficiaryData.beneficiariesAddress"
+        />
+        <!-- Relationship -->
+        <label for="beneficiariesRelationship">Relationship</label>
+        <input
+          id="beneficiariesRelationship"
+          class="form-control"
+          placeholder="Relationship"
+          name="beneficiariesRelationship"
+          [(ngModel)]="beneficiaryData.beneficiariesRelationship"
+        />
+      </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn submit-button">
+      <button
+        type="submit"
+        class="btn submit-button"
+        (click)="BeneficiaryUpdateForm.valid ? modal.close('Save click') : null"
+      >
         Update Beneficiary
       </button>
     </div>
