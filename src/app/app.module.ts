@@ -28,6 +28,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AddPolicyComponent } from './components/add-policy/add-policy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     ProductsComponent,
     NotFoundComponent,
     HomeComponent,
+    AddPolicyComponent,
   ],
   imports: [
     BrowserModule,
