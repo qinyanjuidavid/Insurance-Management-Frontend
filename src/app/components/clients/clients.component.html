@@ -73,7 +73,7 @@
 
 <ng-template #ClientAddContent let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Add Client</h4>
     <button
       type="button"
       class="btn-close"
@@ -181,7 +181,7 @@
     <div class="modal-footer">
       <button
         type="submit"
-        class="btn btn-outline-dark"
+        class="btn submit-button"
         (click)="clientAddForm.valid ? modal.close('Save click') : null"
       >
         Add Client
@@ -194,7 +194,7 @@
 
 <ng-template #ClientUpdateContent let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Client update</h4>
     <button
       type="button"
       class="btn-close"
@@ -309,7 +309,7 @@
     <div class="modal-footer">
       <button
         type="submit"
-        class="btn btn-outline-dark"
+        class="btn submit-button"
         (click)="clientUpdateForm.valid ? modal.close('Save click') : null"
       >
         Update Client
