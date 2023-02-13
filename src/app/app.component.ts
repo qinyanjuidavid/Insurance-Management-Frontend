@@ -22,7 +22,6 @@ export class AppComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   // products
-  products: Product[] = [];
 
   constructor(
     private productsService: ProductService,
@@ -31,69 +30,7 @@ export class AppComponent {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {
-    this.onGetProducts();
-    // this.onGetProduct();
-    // this.onDeleteProduct();
-    // this.onAddProduct();
-    // this.onEditProduct();
-  }
-
-  onAddProduct() {
-    const product = {
-      productName: 'test',
-      description: 'test',
-      productType: 'test',
-      price: 100,
-    };
-    this.productsService.addProduct(product).subscribe(
-      (res) => console.log(res),
-      (err: any) => console.log(err),
-      () => console.log('complete')
-    );
-  }
-
-  onGetProducts() {
-    this.productsService.getProducts().subscribe(
-      (res) => {
-        this.products = res;
-        console.log(res);
-      },
-      (err: any) => console.log(err),
-      () => console.log('complete')
-    );
-  }
-
-  // onGetProduct() {
-  //   this.productsService.getProduct(2).subscribe(
-  //     (res) => console.log(res),
-  //     (err: any) => console.log(err),
-  //     () => console.log('complete')
-  //   );
-  // }
-
-  // onEditProduct() {
-  //   const product = {
-  //     id: 19,
-  //     productName: 'test product',
-  //     description: 'test Description',
-  //     productType: 'test  Type',
-  //     price: 200,
-  //   };
-  //   this.productsService.updateProduct(product).subscribe(
-  //     (res) => console.log(res),
-  //     (err: any) => console.log(err),
-  //     () => console.log('complete')
-  //   );
-  // }
-
-  onDeleteProduct() {
-    this.productsService.deleteProduct(19).subscribe(
-      (res) => console.log(res),
-      (err: any) => console.log(err),
-      () => console.log('complete')
-    );
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     this.observer
