@@ -27,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatTableModule,
     HttpClientModule,
+    FormsModule,
   ],
 
   providers: [],

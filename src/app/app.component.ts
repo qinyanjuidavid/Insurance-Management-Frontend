@@ -33,7 +33,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.onGetProducts();
-    this.onGetProduct();
+    // this.onGetProduct();
     // this.onDeleteProduct();
     // this.onAddProduct();
     this.onEditProduct();
@@ -64,13 +64,13 @@ export class AppComponent {
     );
   }
 
-  onGetProduct() {
-    this.productsService.getProduct(2).subscribe(
-      (res) => console.log(res),
-      (err: any) => console.log(err),
-      () => console.log('complete')
-    );
-  }
+  // onGetProduct() {
+  //   this.productsService.getProduct(2).subscribe(
+  //     (res) => console.log(res),
+  //     (err: any) => console.log(err),
+  //     () => console.log('complete')
+  //   );
+  // }
 
   onEditProduct() {
     const product = {

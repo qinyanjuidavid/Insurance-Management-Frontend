@@ -5,11 +5,119 @@
 </ol>
 
 <div style="text-align: right">
-  <button mat-button class="add-insurance-product-button" color="primary">
+  <button
+    mat-button
+    class="add-insurance-product-button"
+    (click)="openPostModal(productContent)"
+    color="primary"
+  >
     <mat-icon>add</mat-icon>
     Add Product
   </button>
 </div>
+
+<ng-template #productContent let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title">Add Insurance Product</h2>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+
+  <form #productsAddForm="ngForm" (ngSubmit)="onAddProduct(productsAddForm)">
+    <div class="modal-body">
+      <div class="mb-3">
+        <label for="productName">Product Name</label>
+        <!-- <div class="input-group"> -->
+        <input
+          id="productName"
+          class="form-control"
+          placeholder="Product Name"
+          name="productName"
+          ngModel
+          required
+        />
+
+        <div
+          *ngIf="
+            productsAddForm.submitted &&
+            !productsAddForm.controls['productName'].valid
+          "
+          class="text-danger"
+        >
+          <p>Product Name is required.</p>
+        </div>
+        <!-- </div> -->
+        <label for="productType">Product Type</label>
+        <!-- <div class="input-group"> -->
+        <input
+          id="productType"
+          type="text"
+          class="form-control"
+          placeholder="Product Type"
+          name="productType"
+          ngModel
+          required
+        />
+        <div
+          *ngIf="
+            productsAddForm.submitted &&
+            !productsAddForm.controls['productType'].valid
+          "
+          class="text-danger"
+        >
+          <p>Product Type is required.</p>
+        </div>
+        <!-- </div> -->
+        <label for="price">Price</label>
+        <!-- <div class="input-group"> -->
+        <input
+          id="price"
+          type="number"
+          class="form-control"
+          placeholder="Price"
+          name="price"
+          ngModel
+          required
+        />
+        <div
+          *ngIf="
+            productsAddForm.submitted &&
+            !productsAddForm.controls['price'].valid
+          "
+          class="text-danger"
+        >
+          <p>Price is required.</p>
+        </div>
+        <!-- </div> -->
+        <label for="description">Product Description</label>
+        <div class="input-group">
+          <textarea
+            class="form-control"
+            type="text"
+            id="description"
+            placeholder="Product Description"
+            name="description"
+            rows="3"
+            ngModel
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="submit"
+        class="btn btn-outline-dark"
+        (click)="productsAddForm.valid ? modal.close('Save click') : null"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</ng-template>
 
 <table class="table table-striped">
   <thead>

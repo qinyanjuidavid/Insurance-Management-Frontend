@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from 'src/app/interface/product';
 import { ProductService } from 'src/app/service/product.service';
@@ -10,8 +11,12 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class ProductsComponent {
   closeResult = '';
+  closeResultPost = '';
+
   products: Product[] = [];
   productData: Product = {} as Product;
+
+  // post
   constructor(
     private productsService: ProductService,
     private modalService: NgbModal
@@ -76,5 +81,31 @@ export class ProductsComponent {
       (err: any) => console.log(err),
       () => console.log('complete')
     );
+  }
+
+  openPostModal(productContent: any) {
+    this.modalService
+      .open(productContent, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResultPost = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResultPost = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  onAddProduct(form: NgForm) {
+    if (form.valid) {
+      this.productsService.addProduct(form.value).subscribe(
+        (res) => {
+          console.log(res);
+          this.onGetProducts();
+        },
+        (err: any) => console.log(err),
+        () => console.log('complete')
+      );
+    }
   }
 }
