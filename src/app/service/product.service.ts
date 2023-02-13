@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 import { Product } from '../interface/product';
 
 @Injectable({
@@ -12,11 +12,16 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl + 'products');
+    return this.http
+      .get<Product[]>(this.apiUrl + 'products')
+      .pipe(tap((products) => console.log('Products::: ', products)));
   }
 
   getProduct(id: number): Observable<Product> {
-    return this.http.get<Product>(this.apiUrl + 'products/' + id);
+    let header = new HttpHeaders();
+    return this.http.get<Product>(this.apiUrl + 'products/' + id, {
+      headers: header,
+    });
   }
 
   addProduct(product: Product): Observable<Product> {
@@ -31,6 +36,6 @@ export class ProductService {
   }
 
   deleteProduct(id: number): Observable<Product> {
-    return this.http.delete<Product>(this.apiUrl + 'products/' + id + '/');
+    return this.http.delete<Product>(this.apiUrl + 'products/' + id);
   }
 }

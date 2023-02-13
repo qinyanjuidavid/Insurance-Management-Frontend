@@ -10,6 +10,7 @@ import {
 } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ProductService } from './service/product.service';
+import { Product } from './interface/product';
 
 @UntilDestroy()
 @Component({
@@ -20,6 +21,8 @@ import { ProductService } from './service/product.service';
 export class AppComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+  // products
+  products: Product[] = [];
 
   constructor(
     private productsService: ProductService,
@@ -52,7 +55,10 @@ export class AppComponent {
 
   onGetProducts() {
     this.productsService.getProducts().subscribe(
-      (res) => console.log(res),
+      (res) => {
+        this.products = res;
+        console.log(res);
+      },
       (err: any) => console.log(err),
       () => console.log('complete')
     );
@@ -69,10 +75,10 @@ export class AppComponent {
   onEditProduct() {
     const product = {
       id: 19,
-      productName: 'test',
-      description: 'test',
-      productType: 'test',
-      price: 100,
+      productName: 'test product',
+      description: 'test Description',
+      productType: 'test  Type',
+      price: 200,
     };
     this.productsService.updateProduct(product).subscribe(
       (res) => console.log(res),
