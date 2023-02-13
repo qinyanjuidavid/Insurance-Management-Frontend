@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from 'src/app/interface/product';
@@ -16,7 +16,6 @@ export class ProductsComponent {
   products: Product[] = [];
   productData: Product = {} as Product;
 
-  // post
   constructor(
     private productsService: ProductService,
     private modalService: NgbModal
@@ -27,11 +26,15 @@ export class ProductsComponent {
   }
 
   openEditModal(content: any, id: number) {
-    this.productsService.getProduct(id);
+    if (typeof id === 'number') {
+      this.onGetProduct(id);
+    }
+
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
         (result) => {
+          console.log('Result', result);
           this.closeResult = `Closed with: ${result}`;
         },
         (reason) => {
@@ -99,6 +102,19 @@ export class ProductsComponent {
   onAddProduct(form: NgForm) {
     if (form.valid) {
       this.productsService.addProduct(form.value).subscribe(
+        (res) => {
+          console.log(res);
+          this.onGetProducts();
+        },
+        (err: any) => console.log(err),
+        () => console.log('complete')
+      );
+    }
+  }
+
+  onUpdateProduct(productId: number, form: NgForm) {
+    if (form.valid) {
+      this.productsService.updateProduct(productId, form.value).subscribe(
         (res) => {
           console.log(res);
           this.onGetProducts();

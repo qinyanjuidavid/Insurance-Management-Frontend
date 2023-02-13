@@ -36,7 +36,7 @@ export class AppComponent {
     // this.onGetProduct();
     // this.onDeleteProduct();
     // this.onAddProduct();
-    this.onEditProduct();
+    // this.onEditProduct();
   }
 
   onAddProduct() {
@@ -72,20 +72,20 @@ export class AppComponent {
   //   );
   // }
 
-  onEditProduct() {
-    const product = {
-      id: 19,
-      productName: 'test product',
-      description: 'test Description',
-      productType: 'test  Type',
-      price: 200,
-    };
-    this.productsService.updateProduct(product).subscribe(
-      (res) => console.log(res),
-      (err: any) => console.log(err),
-      () => console.log('complete')
-    );
-  }
+  // onEditProduct() {
+  //   const product = {
+  //     id: 19,
+  //     productName: 'test product',
+  //     description: 'test Description',
+  //     productType: 'test  Type',
+  //     price: 200,
+  //   };
+  //   this.productsService.updateProduct(product).subscribe(
+  //     (res) => console.log(res),
+  //     (err: any) => console.log(err),
+  //     () => console.log('complete')
+  //   );
+  // }
 
   onDeleteProduct() {
     this.productsService.deleteProduct(19).subscribe(

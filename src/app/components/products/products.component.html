@@ -31,7 +31,6 @@
     <div class="modal-body">
       <div class="mb-3">
         <label for="productName">Product Name</label>
-        <!-- <div class="input-group"> -->
         <input
           id="productName"
           class="form-control"
@@ -50,9 +49,9 @@
         >
           <p>Product Name is required.</p>
         </div>
-        <!-- </div> -->
+
         <label for="productType">Product Type</label>
-        <!-- <div class="input-group"> -->
+
         <input
           id="productType"
           type="text"
@@ -71,9 +70,9 @@
         >
           <p>Product Type is required.</p>
         </div>
-        <!-- </div> -->
+
         <label for="price">Price</label>
-        <!-- <div class="input-group"> -->
+
         <input
           id="price"
           type="number"
@@ -92,7 +91,7 @@
         >
           <p>Price is required.</p>
         </div>
-        <!-- </div> -->
+
         <label for="description">Product Description</label>
         <div class="input-group">
           <textarea
@@ -110,10 +109,10 @@
     <div class="modal-footer">
       <button
         type="submit"
-        class="btn btn-outline-dark"
+        class="btn submit-button"
         (click)="productsAddForm.valid ? modal.close('Save click') : null"
       >
-        Save
+        Add Product
       </button>
     </div>
   </form>
@@ -172,7 +171,7 @@
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Update Product</h4>
     <button
       type="button"
       class="btn-close"
@@ -180,35 +179,92 @@
       (click)="modal.dismiss('Cross click')"
     ></button>
   </div>
-  <div class="modal-body">
-    <form>
+  <form
+    #productEditForm="ngForm"
+    *ngIf="productData.id"
+    (ngSubmit)="onUpdateProduct(productData.id, productEditForm)"
+  >
+    <div class="modal-body">
       <div class="mb-3">
-        <label for="dateOfBirth">Date of birth</label>
+        <label for="productName">Product Name</label>
+        <input
+          id="productName"
+          class="form-control"
+          placeholder="Product Name"
+          name="productName"
+          [(ngModel)]="productData.productName"
+          required
+        />
+        <div
+          *ngIf="
+            productEditForm.submitted &&
+            !productEditForm.controls['productName'].valid
+          "
+          class="text-danger"
+        >
+          <p>Product Name is required.</p>
+        </div>
+
+        <label for="productType">Product Type</label>
+        <input
+          id="productType"
+          type="text"
+          class="form-control"
+          placeholder="Product Type"
+          name="productType"
+          [(ngModel)]="productData.productType"
+          required
+        />
+        <div
+          *ngIf="
+            productEditForm.submitted &&
+            !productEditForm.controls['productType'].valid
+          "
+          class="text-danger"
+        >
+          <p>Product Type is required.</p>
+        </div>
+        <label for="price">Price</label>
+        <input
+          id="price"
+          type="number"
+          class="form-control"
+          placeholder="Price"
+          name="price"
+          [(ngModel)]="productData.price"
+          required
+        />
+        <div
+          *ngIf="
+            productEditForm.submitted &&
+            !productEditForm.controls['price'].valid
+          "
+          class="text-danger"
+        >
+          <p>Price is required.</p>
+        </div>
+        <label for="description">Product Description</label>
         <div class="input-group">
-          <input
-            id="dateOfBirth"
+          <textarea
             class="form-control"
-            placeholder="yyyy-mm-dd"
-            name="dp"
-            ngbDatepicker
-            #dp="ngbDatepicker"
-          />
-          <button
-            class="btn btn-outline-secondary bi bi-calendar3"
-            (click)="dp.toggle()"
-            type="button"
-          ></button>
+            type="text"
+            id="description"
+            placeholder="Product Description"
+            name="description"
+            rows="3"
+            [(ngModel)]="productData.description"
+          ></textarea>
         </div>
       </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-dark"
-      (click)="modal.close('Save click')"
-    >
-      Save
-    </button>
-  </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="submit"
+        class="btn btn-outline-dark"
+        (click)="productEditForm.valid ? modal.close('Save click') : null"
+      >
+        Save
+      </button>
+    </div>
+  </form>
 </ng-template>
