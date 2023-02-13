@@ -1,10 +1,10 @@
 export interface Client {
-  id: number;
+  id?: number;
   name: string;
-  address: null;
+  address: string;
   phone: string;
   email: string;
-  nextOfKin: null;
-  nextOfKinPhone: null;
-  nextOfKinEmail: null;
+  nextOfKin: string;
+  nextOfKinPhone: string;
+  nextOfKinEmail: string;
 }

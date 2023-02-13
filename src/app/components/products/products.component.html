@@ -9,7 +9,6 @@
     mat-button
     class="add-insurance-product-button"
     (click)="openPostModal(productContent)"
-    color="primary"
   >
     <mat-icon>add</mat-icon>
     Add Product
@@ -34,6 +33,7 @@
         <input
           id="productName"
           class="form-control"
+          type="text"
           placeholder="Product Name"
           name="productName"
           ngModel
@@ -260,10 +260,10 @@
     <div class="modal-footer">
       <button
         type="submit"
-        class="btn btn-outline-dark"
+        class="btn submit-button"
         (click)="productEditForm.valid ? modal.close('Save click') : null"
       >
-        Save
+        Update Product
       </button>
     </div>
   </form>

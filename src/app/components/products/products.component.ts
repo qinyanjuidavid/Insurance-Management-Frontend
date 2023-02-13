@@ -34,7 +34,6 @@ export class ProductsComponent {
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
         (result) => {
-          console.log('Result', result);
           this.closeResult = `Closed with: ${result}`;
         },
         (reason) => {

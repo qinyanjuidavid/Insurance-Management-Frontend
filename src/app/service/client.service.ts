@@ -20,4 +20,12 @@ export class ClientService {
   getClient(id: number): Observable<Client> {
     return this.http.get<Client>(this.apiUrl + 'clients/' + id);
   }
+
+  addClient(client: Client): Observable<Client> {
+    http: return this.http.post<Client>(this.apiUrl + 'clients/', client);
+  }
+
+  updateClient(id: number, client: Client): Observable<Client> {
+    return this.http.put<Client>(this.apiUrl + 'clients/' + id + '/', client);
+  }
 }
