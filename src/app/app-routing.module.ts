@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddPolicyComponent } from './components/add-policy/add-policy.component';
 import { BeneficiaryComponent } from './components/beneficiary/beneficiary.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { HomeComponent } from './components/home/home.component';
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'policies',
     component: PolicyComponent,
+  },
+  {
+    path: 'policy-add',
+    component: AddPolicyComponent,
   },
   {
     path: 'clients',

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 // angular material imports
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -57,6 +58,7 @@ import { AddPolicyComponent } from './components/add-policy/add-policy.component
     MatTableModule,
     HttpClientModule,
     FormsModule,
+    BsDatepickerModule.forRoot(),
   ],
 
   providers: [],
