@@ -30,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AddPolicyComponent } from './components/add-policy/add-policy.component';
+import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { AddPolicyComponent } from './components/add-policy/add-policy.component
     NotFoundComponent,
     HomeComponent,
     AddPolicyComponent,
+    PolicyDetailsComponent,
   ],
   imports: [
     BrowserModule,
